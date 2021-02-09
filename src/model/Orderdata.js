@@ -7,6 +7,9 @@ const Schema = mongoose.Schema;
 const OrderSchema =  new Schema({
      userId:String,
      stayId:String,
+     from:String,
+     dateCheckIn:String,
+     fullName:String,
      hotelName:String,
      district:String,
      address:String,

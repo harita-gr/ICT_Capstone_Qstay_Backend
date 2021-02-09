@@ -72,6 +72,14 @@ function router() {
         })
       });
 
+      stayRouter.get('/getCount',function(req,res){
+        Staydata.countDocuments({})
+          .then((count)=>{
+              console.log('Stay count:',count);
+              res.send({count});
+          });
+    })
+
     return stayRouter;
 }
 

@@ -31,6 +31,9 @@ function router() {
         var order = {
             userId:data.userId,
             stayId:data.stayId,
+            from:data.from,
+            dateCheckIn:data.dateCheckIn,
+            fullName:data.fullName,
             hotelName:data.hotelName,
             district:data.district,
             address:data.address,

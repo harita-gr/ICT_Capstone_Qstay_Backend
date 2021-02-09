@@ -2,6 +2,9 @@ const express = require('express');
 const validateRouter = express.Router();
 const jwt = require ('jsonwebtoken');
 
+adminusername='admin@qs.com';
+adminpassword='12345678';
+
 const Userdata = require('../model/Userdata');
 
 function router() {
@@ -46,6 +49,24 @@ function router() {
                 res.status(404).send({"message": "User not found! Please SIGN UP!"});
       });
     })
+
+    validateRouter.post('/adminLogin',(req,res) => {
+      console.log(req.body);
+      let userData = req.body;
+  
+      if(adminusername !== userData.email){
+          res.status(404).send('Invalid Username');
+      }
+      else if (adminpassword !== userData.password){
+          res.status(401).send('Invalid Password');
+      }
+      else{
+          console.log('Validation Success!');
+          let payload = {subject: adminusername + adminpassword};
+          let token = jwt.sign(payload,'secretKey');
+          res.status(200).send({token});
+      }
+  });
         
 
     return validateRouter;

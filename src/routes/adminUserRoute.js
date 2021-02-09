@@ -53,6 +53,32 @@ function router() {
       })
 
 
+      validateRouter.get('/getCount',function(req,res){
+        Userdata.countDocuments({})
+          .then((count)=>{
+              console.log('Order count:',count);
+              res.send({count});
+          });
+    })
+
+    
+    validateRouter.get('/getLatestList',function(req,res){
+      // Userdata.find({}, {}, { sort: { 'created_at' : -1 }},{limit:3})
+      // .then(function(users){
+      //   console.log('Users',users);
+      //     res.send(users);
+      // });
+      // var users = Userdata.find().sort({$natural:-1}).limit(3);
+      // console.log('Users',users);
+      // res.send(users).status(200);    
+
+      Userdata.find({}).sort({_id: -1}).limit(3).then((users) => {
+        console.log('Users',users);
+        res.send(users);
+    })
+
+    })
+
 
     return validateRouter;
 }

@@ -23,12 +23,13 @@ const validateRouter = require('./src/routes/validateRoute') ();
 const adminUserRouter = require('./src/routes/adminUserRoute') ();
 const adminStayRouter = require('./src/routes/adminStayRoute')();
 const bookRouter = require('./src/routes/bookingRoute')();
+const orderRouter = require('./src/routes/adminOrderRoute')();
 
 app.use('/user',validateRouter); 
 app.use('/user/book',bookRouter); 
 app.use('/admin/users',adminUserRouter);
 app.use('/admin/stay',adminStayRouter);
-
+app.use('/admin/order',orderRouter);
 
 app.get('/', function (req,res){
     res.send('Hello from server &copy; Harita Ravindranath');
