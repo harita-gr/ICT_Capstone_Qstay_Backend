@@ -31,7 +31,7 @@ app.use('/admin/stay',adminStayRouter);
 
 
 app.get('/', function (req,res){
-    res.send('Hello from server');
+    res.send('Hello from server &copy; Harita Ravindranath');
 })
 
 app.listen(PORT,function(){
